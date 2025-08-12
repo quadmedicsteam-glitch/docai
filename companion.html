@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>QuadMedics Companion — Offline Assistant</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+    /* extra page-specific tweaks */
+    .companion-page { max-width:1100px; margin:2rem auto; }
+    .assistant { display:grid; grid-template-columns: 1fr 360px; gap:16px; align-items:start; }
+    @media (max-width:950px) { .assistant { grid-template-columns: 1fr; } .assistant-right { order:2; } }
+    .assistant-left { display:flex; flex-direction:column; }
+    .chat-area { flex:1 1 auto; min-height:200px; max-height:68vh; overflow:auto; padding:12px; background:rgba(0,0,0,0.06); border-radius:12px; }
+    .controls { display:flex; gap:8px; margin-top:8px; flex-shrink:0; }
+    .chip { padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.04); cursor:pointer; border:1px solid rgba(255,255,255,0.02); }
+  </style>
+<style>
+    /* Improved search bar design */
+    .controls input,
+    .pharmacy-search input {
+      font-size: 1.1rem;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 2px solid var(--brand1, #0fffc1);
+      background: #fff;
+      color: #000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .controls button,
+    .pharmacy-search button {
+      font-size: 1.05rem;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(90deg, var(--brand1, #0fffc1), var(--brand2, #ff6f91));
+      color: #000;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .controls button:hover,
+    .pharmacy-search button:hover {
+      filter: brightness(1.05);
+    }
+  </style>
+</head>
+<body class="page-companion">
+
+</script>
+
+<header class="site-header">
+<div class="header-inner container">
+<div class="brand"><a class="brand-link" href="index.html">⚕️ <span class="brand-title">QuadMedics</span></a></div>
+<nav aria-label="Primary navigation" class="main-nav">
+<a href="index.html">Home</a>
+<a href="pharmacies.html">Pharmacies</a>
+<a href="hotlines.html">Hotlines</a>
+<a href="body-sections.html">Body Sections</a>
+<a href="specialists.html">Specialists</a>
+<a aria-current="page" class="cta" href="companion.html">Companion</a>
+</nav>
+</div>
+</header>
+<main class="container companion-page">
+<div class="card wide companion-page-inner">
+<div class="section-title">QuadMedics Companion</div>
+<p class="muted">This offline assistant uses an advanced rule-based engine with typo-correction, fuzzy matching, and site-aware suggestions. It is designed to be helpful, conservative, and to point you to the correct page on this site.</p>
+<div class="assistant">
+<div class="assistant-left">
+<div aria-live="polite" class="chat-area" id="chat" role="log"></div>
+<div class="controls" style="margin-top:10px;">
+<input id="comp-input" placeholder="Ask: 'headache', 'nearest pharmacy', 'chest pain'..." style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.06)"/>
+<button id="comp-send">Send</button>
+<button id="comp-export">Export</button>
+</div>
+<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
+<button class="chip" data-suggest="pharmacy">Find pharmacy</button>
+<button class="chip" data-suggest="hotlines">Hotlines</button>
+<button class="chip" data-suggest="headache">Headache</button>
+<button class="chip" data-suggest="cardiologist">Cardiologist</button>
+<button class="chip" data-suggest="delivery">Pharmacy delivery</button>
+</div>
+</div>
+<aside class="assistant-right">
+<div class="card" style="padding:12px;">
+<h4 style="margin-top:0">About this assistant</h4>
+<ul>
+<li>Autocorrects typos and shows suggestions.</li>
+<li>Site-aware: links to Pharmacies / Hotlines / Body / Specialists.</li>
+<li>Offline and privacy-friendly — all data stays in your browser.</li>
+</ul>
+<hr/>
+<div style="display:flex;gap:8px;flex-direction:column;">
+<button class="btn-ghost" id="btn-clear-history">Clear history</button>
+<button class="btn-outline" id="btn-open-pharm">Open Pharmacies</button>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner"><div>© QuadMedics Companion</div><div><a href="index.html">Back</a></div></div>
+</footer>
+<script defer="" src="script.js"></script>
+</body>
+</html>

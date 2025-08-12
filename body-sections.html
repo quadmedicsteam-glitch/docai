@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>QuadMedics — Body Sections</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+/* Problem list buttons */
+.specialist-problems-list button,
+.problem-list button {
+  background: #ff6f91;
+  color: #fff;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.specialist-problems-list button:hover,
+.problem-list button:hover {
+  background: #0fffc1;
+  color: #23234b;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body class="page-body">
+<header class="site-header">
+<div class="header-inner container">
+<div class="brand"><a class="brand-link" href="index.html">⚕️ <span class="brand-title">QuadMedics</span></a></div>
+<nav aria-label="Primary navigation" class="main-nav">
+<a href="index.html">Home</a>
+<a href="pharmacies.html">Pharmacies</a>
+<a href="hotlines.html">Hotlines</a>
+<a aria-current="page" href="body-sections.html">Body Sections</a>
+<a href="specialists.html">Specialists</a>
+<a class="cta" href="companion.html">Companion</a>
+</nav>
+</div>
+</header>
+<main class="container">
+<div class="card wide">
+<div class="section-title">Body Sections — Practical Solutions &amp; When to Seek Help</div>
+<p class="muted">Select an area, choose a problem, and see the solution.</p>
+
+<ul class="body-section-list">
+  <li><button onclick="showProblems('head')">Head</button></li>
+  <li><button onclick="showProblems('chest')">Chest</button></li>
+  <li><button onclick="showProblems('abdomen')">Abdomen</button></li>
+  <li><button onclick="showProblems('limbs')">Limbs</button></li>
+  <li><button onclick="showProblems('skin')">Skin</button></li>
+  <li><button onclick="showProblems('back')">Back & Spine</button></li>
+  <li><button onclick="showProblems('eyes')">Eyes</button></li>
+  <li><button onclick="showProblems('other')">Other</button></li>
+</ul>
+
+<div class="solution problem-list" id="problem-list" style="margin-top:12px;"></div>
+<div class="solution" id="problem-solution" style="margin-top:12px;"></div>
+
+<hr/>
+<div>
+<h3>First-aid quick checklist</h3>
+<ul>
+<li>Major bleeding: apply direct pressure and elevate limb if possible; call emergency services.</li>
+<li>Unconscious but breathing: place in recovery position and monitor airway.</li>
+<li>Suspected spinal injury: immobilize and avoid moving the person unless absolutely necessary.</li>
+</ul>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner"><div>© QuadMedics — Body Sections</div><div><a href="index.html">Back</a></div></div>
+</footer>
+
+<script>
+const bodyProblems = {
+  head: [
+    { name: "Headache", solution: "Rest in a quiet, dark room. Drink water to avoid dehydration. Use mild pain relief if needed. Prevention: maintain regular sleep, manage stress, avoid skipping meals." },
+    { name: "Dizziness", solution: "Sit or lie down until it passes. Drink water. Prevention: eat regularly, avoid sudden standing, stay hydrated." },
+    { name: "Migraine", solution: "Avoid known triggers like bright lights or certain foods. Use prescribed medication at early signs. Prevention: track triggers in a diary, manage stress, maintain regular routines." },
+    { name: "Sinus Pressure", solution: "Use a warm compress over your face, stay hydrated, and use steam inhalation. Prevention: manage allergies, avoid smoke, use saline sprays in dry climates." },
+    { name: "Earache", solution: "Apply a warm cloth, avoid inserting objects in ear. Prevention: dry ears after swimming, treat colds promptly." },
+    { name: "Concussion Symptoms", solution: "Rest, avoid screen time, seek medical evaluation immediately. Prevention: wear helmets for sports, ensure safe environments." }
+  ],
+  chest: [
+    { name: "Chest Pain", solution: "If severe or with shortness of breath, call emergency services immediately. Prevention: maintain a healthy weight, avoid smoking, exercise regularly." },
+    { name: "Cough", solution: "Stay hydrated, use cough drops, rest. Prevention: wash hands often, avoid close contact with sick people." },
+    { name: "Shortness of Breath", solution: "Sit upright, loosen tight clothing, seek medical help if sudden. Prevention: avoid smoking, manage allergies/asthma." },
+    { name: "Heart Palpitations", solution: "Sit calmly, breathe slowly. Prevention: reduce caffeine, manage stress, avoid stimulants." },
+    { name: "Chest Congestion", solution: "Use steam inhalation, drink warm fluids. Prevention: dress warmly in cold weather, treat colds promptly." },
+    { name: "Rib Pain", solution: "Rest, ice the area. Prevention: use proper lifting techniques, wear protective gear in sports." }
+  ],
+  abdomen: [
+    { name: "Stomach Ache", solution: "Rest, hydrate, avoid heavy meals. Prevention: eat balanced meals, avoid overeating." },
+    { name: "Nausea", solution: "Sip clear fluids, avoid strong smells. Prevention: eat small, frequent meals, avoid lying down immediately after eating." },
+    { name: "Constipation", solution: "Increase fiber intake, hydrate, exercise. Prevention: maintain regular meal times, stay active." },
+    { name: "Diarrhea", solution: "Hydrate with electrolyte solutions, avoid greasy foods. Prevention: wash hands before eating, drink clean water." },
+    { name: "Indigestion", solution: "Avoid spicy/fatty foods, eat slowly. Prevention: maintain healthy weight, avoid late-night meals." },
+    { name: "Bloating", solution: "Reduce intake of carbonated drinks, eat slowly. Prevention: identify and avoid trigger foods." }
+  ],
+  limbs: [
+    { name: "Joint Pain", solution: "Rest, ice, elevate, use pain relief. Prevention: maintain healthy weight, stretch before exercise." },
+    { name: "Swelling", solution: "Elevate limb, apply cold compress. Prevention: avoid standing for long periods, wear supportive footwear." },
+    { name: "Fracture", solution: "Immobilize, avoid movement, seek medical attention immediately. Prevention: strengthen bones with calcium & vitamin D." },
+    { name: "Muscle Cramps", solution: "Stretch gently, hydrate. Prevention: warm up before exercise, maintain electrolyte balance." },
+    { name: "Bruising", solution: "Apply cold compress, rest. Prevention: wear protective gear during activities." },
+    { name: "Sprain", solution: "Rest, ice, compression, elevation. Prevention: strengthen muscles, use proper footwear." }
+  ],
+  skin: [
+    { name: "Rash", solution: "Keep area clean, avoid irritants, use mild creams. Prevention: use hypoallergenic products, moisturize regularly." },
+    { name: "Burn", solution: "Cool under running water, cover with sterile cloth. Prevention: use caution with hot liquids and appliances." },
+    { name: "Acne", solution: "Cleanse gently, avoid picking. Prevention: maintain skin hygiene, avoid oily cosmetics." },
+    { name: "Eczema", solution: "Moisturize often, avoid triggers. Prevention: use gentle soaps, wear soft fabrics." },
+    { name: "Sunburn", solution: "Cool with aloe gel, hydrate. Prevention: apply sunscreen, wear protective clothing." },
+    { name: "Fungal Infection", solution: "Keep area dry, use antifungal cream. Prevention: avoid sharing towels, wear breathable fabrics." }
+  ],
+  back: [
+    { name: "Lower Back Pain", solution: "Rest briefly, gentle stretching, heat therapy. Prevention: lift properly, strengthen core muscles." },
+    { name: "Upper Back Pain", solution: "Improve posture, apply warm compress. Prevention: adjust work desk ergonomics." },
+    { name: "Sciatica", solution: "Stretch, use heat/cold packs. Prevention: maintain healthy weight, avoid prolonged sitting." },
+    { name: "Spinal Stiffness", solution: "Gentle exercises, stay active. Prevention: regular stretching breaks." },
+    { name: "Slipped Disc Symptoms", solution: "Rest, seek medical help. Prevention: avoid heavy lifting without support." },
+    { name: "Muscle Spasms", solution: "Apply heat, gentle massage. Prevention: warm up before activities." }
+  ],
+  eyes: [
+    { name: "Eye Strain", solution: "Follow 20-20-20 rule, adjust screen brightness. Prevention: take regular breaks from screens." },
+    { name: "Red Eyes", solution: "Use artificial tears, rest eyes. Prevention: avoid rubbing eyes, manage allergies." },
+    { name: "Dry Eyes", solution: "Use lubricating drops, blink often. Prevention: stay hydrated, use humidifier." },
+    { name: "Blurred Vision", solution: "Rest eyes, consult doctor if persistent. Prevention: get regular eye exams." },
+    { name: "Stye", solution: "Warm compresses, avoid squeezing. Prevention: wash hands before touching eyes." },
+    { name: "Itchy Eyes", solution: "Rinse with clean water, use antihistamine drops if allergic. Prevention: avoid allergens." }
+  ],
+  other: [
+    { name: "Fever", solution: "Rest, hydrate, use fever reducers. Prevention: wash hands, get vaccinated." },
+    { name: "Allergy", solution: "Avoid allergen, use antihistamines. Prevention: monitor triggers, carry emergency medication if severe." },
+    { name: "Fatigue", solution: "Rest, hydrate, maintain balanced diet. Prevention: manage stress, maintain sleep schedule." },
+    { name: "Dehydration", solution: "Drink water, avoid excessive caffeine. Prevention: carry a water bottle, monitor urine color." },
+    { name: "Anxiety", solution: "Practice deep breathing, mindfulness. Prevention: regular exercise, healthy lifestyle." },
+    { name: "Insomnia", solution: "Keep regular bedtime, avoid screens before bed. Prevention: limit caffeine, create relaxing bedtime routine." }
+  ]
+};
+
+function showProblems(section) {
+  const listDiv = document.getElementById('problem-list');
+  const solDiv = document.getElementById('problem-solution');
+  solDiv.style.display = 'none';
+  solDiv.innerHTML = '';
+  
+  const problems = bodyProblems[section] || [];
+  if (!problems.length) {
+    listDiv.innerHTML = "No problems found for this section.";
+    listDiv.style.display = 'block';
+    return;
+  }
+
+  let html = `<strong>${section.charAt(0).toUpperCase() + section.slice(1)} Problems:</strong><ul class="specialist-problems-list">`;
+  problems.forEach((prob, i) => {
+    html += `<li><button onclick="showSolution('${section}', ${i})">${prob.name}</button></li>`;
+  });
+  html += `</ul>`;
+  
+  listDiv.innerHTML = html;
+  listDiv.style.display = 'block';
+}
+
+function showSolution(section, index) {
+  const solDiv = document.getElementById('problem-solution');
+  const prob = (bodyProblems[section] || [])[index];
+  if (!prob) return;
+  
+  solDiv.innerHTML = `<div class="specialist-problem-solution"><b>${prob.name}:</b> ${prob.solution}</div>`;
+  solDiv.style.display = 'block';
+}
+</script>
+</body>
+</html>

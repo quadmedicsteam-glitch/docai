@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>QuadMedics — Specialists</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+/* Doctor list buttons */
+.specialist-problems-list button {
+  background: #ff6f91;
+  color: #fff;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.specialist-problems-list button:hover {
+  background: #0fffc1;
+  color: #23234b;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body class="page-specialists">
+<header class="site-header">
+<div class="header-inner container">
+<div class="brand"><a class="brand-link" href="index.html">⚕️ <span class="brand-title">QuadMedics</span></a></div>
+<nav aria-label="Primary navigation" class="main-nav">
+<a href="index.html">Home</a>
+<a href="pharmacies.html">Pharmacies</a>
+<a href="hotlines.html">Hotlines</a>
+<a href="body-sections.html">Body Sections</a>
+<a aria-current="page" href="specialists.html">Specialists</a>
+<a class="cta" href="companion.html">Companion</a>
+</nav>
+</div>
+</header>
+<main class="container">
+<div class="card wide">
+<div class="section-title">Specialists — Find a Doctor</div>
+<p class="muted">Tap a specialist to see available doctors, then tap a doctor’s name to see contact details.</p>
+
+<ul class="specialist-list" id="specialist-list">
+  <li><button onclick="showSpecialistDoctors('neurologist')">Neurologist (Brain & Nerves)</button></li>
+  <li><button onclick="showSpecialistDoctors('cardiologist')">Cardiologist (Heart)</button></li>
+  <li><button onclick="showSpecialistDoctors('gastroenterologist')">Gastroenterologist (Digestive)</button></li>
+  <li><button onclick="showSpecialistDoctors('orthopedist')">Orthopedist (Bones & Joints)</button></li>
+  <li><button onclick="showSpecialistDoctors('dermatologist')">Dermatologist (Skin)</button></li>
+  <li><button onclick="showSpecialistDoctors('pediatrician')">Pediatrician (Children)</button></li>
+  <li><button onclick="showSpecialistDoctors('psychiatrist')">Psychiatrist (Mental Health)</button></li>
+  <li><button onclick="showSpecialistDoctors('ophthalmologist')">Ophthalmologist (Eyes)</button></li>
+  <li><button onclick="showSpecialistDoctors('ent')">ENT Specialist (Ear, Nose, Throat)</button></li>
+  <li><button onclick="showSpecialistDoctors('pulmonologist')">Pulmonologist (Lungs)</button></li>
+  <li><button onclick="showSpecialistDoctors('endocrinologist')">Endocrinologist (Hormones)</button></li>
+  <li><button onclick="showSpecialistDoctors('urologist')">Urologist (Urinary & Male Reproductive)</button></li>
+  <li><button onclick="showSpecialistDoctors('gynecologist')">Gynecologist (Female Health)</button></li>
+  <li><button onclick="showSpecialistDoctors('rheumatologist')">Rheumatologist (Autoimmune & Joints)</button></li>
+</ul>
+<div class="solution" id="specialist-solution" style="margin-top:12px;"></div>
+
+<hr/>
+<div>
+<h3>How to prepare for a specialist visit</h3>
+<ul>
+<li>Bring your medical history, list of medications, and any test results.</li>
+<li>Write down your symptoms and questions beforehand.</li>
+</ul>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner"><div>© QuadMedics — Specialists</div><div><a href="index.html">Back</a></div></div>
+</footer>
+
+<script>
+const specialistDoctors = {
+  neurologist: [
+    { name: "Dr. Alice Monroe", contact: "📞 (555) 123-4567 | 📍 101 Brain Ave, Neuro City" },
+    { name: "Dr. Ethan Rivera", contact: "📞 (555) 987-6543 | 📍 22 Synapse St, Mindtown" },
+    { name: "Dr. Clara Zhang", contact: "📞 (555) 321-7788 | 📍 56 Neuron Blvd, Cortexville" }
+  ],
+  cardiologist: [
+    { name: "Dr. Samuel Hayes", contact: "📞 (555) 222-1122 | 📍 88 Heartbeat Rd, Cardia" },
+    { name: "Dr. Priya Kapoor", contact: "📞 (555) 445-8899 | 📍 14 Pulse Ave, Aortaville" },
+    { name: "Dr. Liam Thompson", contact: "📞 (555) 778-9900 | 📍 99 Artery Ln, Veinburg" }
+  ],
+  gastroenterologist: [
+    { name: "Dr. Miguel Santos", contact: "📞 (555) 345-2233 | 📍 60 Digest Ln, Gut City" },
+    { name: "Dr. Aisha Karim", contact: "📞 (555) 112-6677 | 📍 11 Stomach St, Enzymeville" },
+    { name: "Dr. Victor Lee", contact: "📞 (555) 900-3344 | 📍 77 Bowel Blvd, Gastro Town" }
+  ],
+  orthopedist: [
+    { name: "Dr. Henry Adams", contact: "📞 (555) 998-7654 | 📍 45 Bone Rd, Joint City" },
+    { name: "Dr. Rachel Green", contact: "📞 (555) 443-2211 | 📍 20 Ligament St, Ortho Hills" },
+    { name: "Dr. Omar Hassan", contact: "📞 (555) 887-6541 | 📍 90 Spine Ave, Skeletown" }
+  ],
+  dermatologist: [
+    { name: "Dr. Bella Russo", contact: "📞 (555) 556-8899 | 📍 12 Skin Dr, Dermaville" },
+    { name: "Dr. George Parker", contact: "📞 (555) 789-2212 | 📍 34 Pore St, Acne City" },
+    { name: "Dr. Naomi Chen", contact: "📞 (555) 665-3321 | 📍 81 Mole Rd, Epidermis Hills" }
+  ],
+  pediatrician: [
+    { name: "Dr. Sofia Martinez", contact: "📞 (555) 213-7890 | 📍 101 Playtime Blvd, Kidstown" },
+    { name: "Dr. James Wilson", contact: "📞 (555) 431-6655 | 📍 15 Toy Ave, Childville" },
+    { name: "Dr. Hannah Kim", contact: "📞 (555) 876-5432 | 📍 56 Care St, Toddler Hills" }
+  ],
+  psychiatrist: [
+    { name: "Dr. Daniel Cooper", contact: "📞 (555) 665-7899 | 📍 10 Calm Rd, Mindwell" },
+    { name: "Dr. Layla Brooks", contact: "📞 (555) 441-2233 | 📍 33 Serenity Ave, Peace City" },
+    { name: "Dr. Marcus Reid", contact: "📞 (555) 777-4455 | 📍 70 Balance Blvd, Mentalis" }
+  ],
+  ophthalmologist: [
+    { name: "Dr. Olivia Grant", contact: "📞 (555) 998-1122 | 📍 14 Vision St, Eyetown" },
+    { name: "Dr. Ethan Scott", contact: "📞 (555) 334-5566 | 📍 45 Retina Rd, Oculis" },
+    { name: "Dr. Julia Wong", contact: "📞 (555) 778-6655 | 📍 80 Lens Ave, Optica" }
+  ],
+  ent: [
+    { name: "Dr. Patrick Cole", contact: "📞 (555) 990-2211 | 📍 21 Ear Rd, Hearville" },
+    { name: "Dr. Emily Foster", contact: "📞 (555) 667-3344 | 📍 42 Nose St, Smelltown" },
+    { name: "Dr. Noah Bennett", contact: "📞 (555) 778-9900 | 📍 88 Throat Ln, Voicetown" }
+  ],
+  pulmonologist: [
+    { name: "Dr. Carla Evans", contact: "📞 (555) 119-8877 | 📍 15 Airway Blvd, Breath City" },
+    { name: "Dr. Andre Silva", contact: "📞 (555) 776-5544 | 📍 30 Lung Rd, Oxygen Hills" },
+    { name: "Dr. Melissa Yates", contact: "📞 (555) 663-2299 | 📍 60 Breath Ave, Pulmo Town" }
+  ],
+  endocrinologist: [
+    { name: "Dr. Leo Martinez", contact: "📞 (555) 335-4411 | 📍 22 Hormone St, Endoville" },
+    { name: "Dr. Sarah Patel", contact: "📞 (555) 445-7722 | 📍 99 Gland Ave, Metabo City" },
+    { name: "Dr. Kevin Wright", contact: "📞 (555) 887-2233 | 📍 54 Thyroid Rd, Insulintown" }
+  ],
+  urologist: [
+    { name: "Dr. Thomas Allen", contact: "📞 (555) 331-2299 | 📍 20 Kidney St, Urinetown" },
+    { name: "Dr. Lila Crawford", contact: "📞 (555) 667-8899 | 📍 70 Bladder Rd, Prostatia" },
+    { name: "Dr. Ahmed Khan", contact: "📞 (555) 992-1133 | 📍 18 Urethra Ln, Flowville" }
+  ],
+  gynecologist: [
+    { name: "Dr. Isabella Flores", contact: "📞 (555) 778-4411 | 📍 40 Wellness Rd, Gynville" },
+    { name: "Dr. Rachel Morgan", contact: "📞 (555) 882-6677 | 📍 88 Care Ave, Ovariatown" },
+    { name: "Dr. Fatima Noor", contact: "📞 (555) 441-2234 | 📍 77 Health St, Womb City" }
+  ],
+  rheumatologist: [
+    { name: "Dr. Oscar Hughes", contact: "📞 (555) 112-6655 | 📍 33 Joint Rd, Arthriville" },
+    { name: "Dr. Chloe Adams", contact: "📞 (555) 778-1122 | 📍 51 Autoimmune Ave, Lupustown" },
+    { name: "Dr. Benjamin Ward", contact: "📞 (555) 991-3377 | 📍 12 Spine St, Rheumacity" }
+  ]
+};
+
+function showSpecialistDoctors(specialty) {
+  const doctors = specialistDoctors[specialty];
+  if (!doctors) {
+    document.getElementById('specialist-solution').innerHTML = "<p>No doctors available for this specialty.</p>";
+    return;
+  }
+  let html = `<strong>${specialty.charAt(0).toUpperCase() + specialty.slice(1)} Doctors:</strong><ul class="specialist-problems-list">`;
+  doctors.forEach((doc, index) => {
+    html += `<li><button onclick="showDoctorContact('${specialty}', ${index})">${doc.name}</button></li>`;
+  });
+  html += `</ul>`;
+  document.getElementById('specialist-solution').innerHTML = html;
+}
+
+function showDoctorContact(specialty, index) {
+  const doc = specialistDoctors[specialty][index];
+  document.getElementById('specialist-solution').innerHTML = `<div><b>${doc.name}</b><br>${doc.contact}</div>`;
+}
+</script>
+</body>
+</html>

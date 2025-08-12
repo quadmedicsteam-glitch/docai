@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>QuadMedics — Pharmacies</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+    .pharmacy-search { margin-top: 0; }
+    .pharmacy-search input { max-width: 400px; }
+    #pharmacies-main { padding-top: 1rem; }
+  </style>
+<style>
+    /* Improved search bar design */
+    .controls input,
+    .pharmacy-search input {
+      font-size: 1.1rem;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 2px solid var(--brand1, #0fffc1);
+      background: #fff;
+      color: #000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .controls button,
+    .pharmacy-search button {
+      font-size: 1.05rem;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(90deg, var(--brand1, #0fffc1), var(--brand2, #ff6f91));
+      color: #000;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .controls button:hover,
+    .pharmacy-search button:hover {
+      filter: brightness(1.05);
+    }
+  </style>
+</head>
+<body class="page-pharmacies">
+
+
+</script>
+
+<header class="site-header">
+<div class="header-inner container">
+<div class="brand"><a class="brand-link" href="index.html">⚕️ <span class="brand-title">QuadMedics</span></a></div>
+<nav aria-label="Primary navigation" class="main-nav">
+<a href="index.html">Home</a>
+<a aria-current="page" href="pharmacies.html">Pharmacies</a>
+<a href="hotlines.html">Hotlines</a>
+<a href="body-sections.html">Body Sections</a>
+<a href="specialists.html">Specialists</a>
+<a class="cta" href="companion.html">Companion</a>
+</nav>
+</div>
+</header>
+<main class="container" id="pharmacies-main">
+<div class="card wide">
+<div class="section-title">Pharmacy Finder (Offline Demo)</div>
+<p class="muted">This demo shows bundled pharmacy results. Replace the demo block with your API later for live results.</p>
+<form class="pharmacy-search" onsubmit="findPharmacies(event)">
+<label class="sr-only" for="location">Location</label>
+<input id="location" placeholder="Enter town, street or landmark (or press Use My Location)" type="text"/>
+<div class="row" style="margin-top:8px;">
+<button type="submit">Search</button>
+<button onclick="useCurrentLocation()" type="button">Use My Location</button>
+<button onclick="showPharmacy24()" type="button">24/7</button>
+<button onclick="showPharmacyDelivery()" type="button">Delivery</button>
+</div>
+</form>
+<div aria-live="polite" class="pharmacy-list" id="pharmacy-list" role="region" style="margin-top:12px;"></div>
+<hr/>
+<div class="grid-2">
+<div>
+<h3>Pharmacy best practices</h3>
+<ul>
+<li>Always confirm prescription availability by phone before traveling.</li>
+<li>For cold-chain meds (insulin, vaccines) request temperature-controlled delivery.</li>
+<li>Ask about generics to reduce costs safely.</li>
+</ul>
+</div>
+<div>
+<h3>Pharmacy services explained</h3>
+<ul>
+<li><strong>24/7:</strong> Open all day — call to confirm.</li>
+<li><strong>Delivery:</strong> Home delivery, sometimes with temperature guarantee.</li>
+<li><strong>Consult:</strong> Pharmacist consultation for OTC interactions.</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-inner"><div>© QuadMedics — Pharmacies</div><div><a href="index.html">Back</a></div></div>
+</footer>
+<script defer="" src="script.js"></script>
+</body>
+</html>
